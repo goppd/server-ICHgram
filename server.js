@@ -5,6 +5,8 @@ import connectDB from './config/db.js'
 import authRoutes from './routes/authRoutes.js'
 import authMiddleware from './middlewares/authMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
+import postRoutes from './routes/postRoutes.js'
+import commentRoutes from './routes/commentRoutes.js'
 
 dotenv.config()
 
@@ -16,6 +18,8 @@ app.use(cors())
 app.use(express.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/posts', postRoutes)
+app.use('/api/comments', commentRoutes)
 
 app.get('/api/profile', authMiddleware, (req, res) => {
   res.json({
