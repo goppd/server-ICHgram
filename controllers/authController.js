@@ -21,6 +21,7 @@ const register = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`,
     })
 
     res.status(201).json({

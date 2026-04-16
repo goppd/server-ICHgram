@@ -11,7 +11,7 @@ const getProfile = async (req, res) => {
       return res.status(404).json({ message: 'User not found' })
     }
 
-    res.json(user)
+    res.json({ user })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -34,11 +34,7 @@ const updateProfile = async (req, res) => {
     const updatedUser = await user.save()
 
     res.json({
-      _id: updatedUser._id,
-      username: updatedUser.username,
-      email: updatedUser.email,
-      bio: updatedUser.bio,
-      avatar: updatedUser.avatar,
+      user: updatedUser,
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -100,7 +96,7 @@ const getUserById = async (req, res) => {
       return res.status(404).json({ message: 'User not found' })
     }
 
-    res.json(user)
+    res.json({ user })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
